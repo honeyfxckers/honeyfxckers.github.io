@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Game</title>
+    <title>Notcoin Game</title>
     <style>
         body {
             display: flex;
@@ -12,14 +12,41 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #game {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            border-radius: 10px;
         }
         button {
-            padding: 20px;
-            font-size: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <button onclick="alert('Ваня, я сделал прорыв!')">Нажми на меня!</button>
+    <div id="game">
+        <button onclick="play()">Play Notcoin</button>
+    </div>
+
+    <script>
+        function play() {
+            alert('You played Notcoin!');
+            // Здесь можно добавить вашу логику игры
+        }
+    </script>
 </body>
 </html>
