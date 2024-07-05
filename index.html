@@ -39,18 +39,27 @@
             left: 10px;
             font-size: 18px;
         }
+        #timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div id="game">
         <div id="score">Score: 0</div>
-        <img src="Honey fuckeers coin.png" id="notcoin" alt="Notcoin">
+        <div id="timer">Time: 30s</div>
+        <img src="Honey_fuckeers_coin.png" id="notcoin" alt="Notcoin">
     </div>
 
     <script>
         let score = 0;
+        let time = 30; // Игра длится 30 секунд
         const notcoin = document.getElementById('notcoin');
         const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
 
         function getRandomPosition() {
             const game = document.getElementById('game');
@@ -71,7 +80,25 @@
             moveNotcoin();
         });
 
+        function startTimer() {
+            const timer = setInterval(() => {
+                time--;
+                timerDisplay.textContent = `Time: ${time}s`;
+                if (time <= 0) {
+                    clearInterval(timer);
+                    alert(`Game over! Your score is: ${score}`);
+                    // Reset game
+                    score = 0;
+                    time = 30;
+                    scoreDisplay.textContent = `Score: ${score}`;
+                    timerDisplay.textContent = `Time: ${time}s`;
+                    moveNotcoin();
+                }
+            }, 1000);
+        }
+
         moveNotcoin();
+        startTimer();
     </script>
 </body>
 </html>
