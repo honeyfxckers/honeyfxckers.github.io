@@ -3,77 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notcoin Game</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            flex-direction: column;
-        }
-        #game {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        #notcoin {
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            position: absolute;
-        }
-        #score {
-            position: absolute;
-            top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        #timer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 18px;
-        }
-    </style>
+    <title>Honey Coin Game</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div id="game">
         <div id="score">0</div>
-        <img src="Honey_fuckeers_coin.png" id="notcoin" alt="Notcoin">
+        <img src="images/Honey_coin.png" id="honey-coin" alt="Honey Coin">
         <div id="timer">30s</div>
     </div>
 
     <script>
         let score = 0;
         let time = 30; // Игра длится 30 секунд
-        const notcoin = document.getElementById('notcoin');
+        const honeyCoin = document.getElementById('honey-coin');
         const scoreDisplay = document.getElementById('score');
         const timerDisplay = document.getElementById('timer');
 
         function getRandomPosition() {
             const game = document.getElementById('game');
-            const x = Math.random() * (game.clientWidth - notcoin.clientWidth);
-            const y = Math.random() * (game.clientHeight - notcoin.clientHeight);
+            const x = Math.random() * (game.clientWidth - honeyCoin.clientWidth);
+            const y = Math.random() * (game.clientHeight - honeyCoin.clientHeight);
             return { x, y };
         }
 
-        function moveNotcoin() {
+        function moveHoneyCoin() {
             const { x, y } = getRandomPosition();
-            notcoin.style.left = `${x}px`;
-            notcoin.style.top = `${y}px`;
+            honeyCoin.style.left = `${x}px`;
+            honeyCoin.style.top = `${y}px`;
         }
 
-        notcoin.addEventListener('click', () => {
+        honeyCoin.addEventListener('click', () => {
             score++;
             scoreDisplay.textContent = score;
-            moveNotcoin();
+            moveHoneyCoin();
         });
 
         function startTimer() {
@@ -88,12 +51,21 @@
                     time = 30;
                     scoreDisplay.textContent = score;
                     timerDisplay.textContent = `${time}s`;
-                    moveNotcoin();
+                    moveHoneyCoin();
                 }
             }, 1000);
         }
 
-        moveNotcoin();
+        // Центрирование объекта при старте игры
+        function centerHoneyCoin() {
+            const game = document.getElementById('game');
+            const x = (game.clientWidth - honeyCoin.clientWidth) / 2;
+            const y = (game.clientHeight - honeyCoin.clientHeight) / 2;
+            honeyCoin.style.left = `${x}px`;
+            honeyCoin.style.top = `${y}px`;
+        }
+
+        centerHoneyCoin();
         startTimer();
     </script>
 </body>
