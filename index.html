@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honey Fxuckers</title>
+    <title>Notcoin Game</title>
     <style>
         body {
             display: flex;
@@ -25,28 +25,53 @@
             font-size: 24px;
             color: #333;
             border-radius: 10px;
+            position: relative;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 5px;
+        #notcoin {
+            width: 50px;
+            height: 50px;
             cursor: pointer;
+            position: absolute;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
     <div id="game">
-        <button onclick="play()">Play Honey Fxckers</button>
+        <div id="score">Score: 0</div>
+        <img src="your-image-url.png" id="notcoin" alt="Notcoin">
     </div>
 
     <script>
-        function play() {
-            alert('You played Honey Fxckers!');
-            // Здесь можно добавить вашу логику игры
+        let score = 0;
+        const notcoin = document.getElementById('notcoin');
+        const scoreDisplay = document.getElementById('score');
+
+        function getRandomPosition() {
+            const game = document.getElementById('game');
+            const x = Math.random() * (game.clientWidth - notcoin.clientWidth);
+            const y = Math.random() * (game.clientHeight - notcoin.clientHeight);
+            return { x, y };
         }
+
+        function moveNotcoin() {
+            const { x, y } = getRandomPosition();
+            notcoin.style.left = `${x}px`;
+            notcoin.style.top = `${y}px`;
+        }
+
+        notcoin.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+            moveNotcoin();
+        });
+
+        moveNotcoin();
     </script>
 </body>
 </html>
