@@ -39,7 +39,7 @@ body {
     bottom: 20px;
     width: 80%;
     height: 30px;
-    background-color: #555;
+    background-color: #fff; /* Белый фон полоски */
     border-radius: 15px;
     overflow: hidden;
     display: flex;
@@ -50,12 +50,12 @@ body {
 #energy-bar {
     height: 100%;
     width: 0;
-    background-color: #00ff00;
+    background-color: #00ff00; /* Зеленый цвет для заполнения */
 }
 
 #energy-text {
     position: absolute;
-    color: white;
+    color: black; /* Черный цвет для текста процентов */
     font-size: 18px;
     text-align: center;
     width: 100%;
