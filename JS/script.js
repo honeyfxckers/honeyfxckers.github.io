@@ -3,7 +3,6 @@ let energy = 100;
 const coin = document.getElementById('coin');
 const scoreDisplay = document.getElementById('score');
 const energyBar = document.getElementById('energy-bar');
-const energyText = document.getElementById('energy-text');
 const energyCounter = document.createElement('div');
 energyCounter.id = 'energy-counter';
 energyCounter.textContent = `${energy}/100`;
@@ -11,7 +10,6 @@ document.getElementById('game').appendChild(energyCounter);
 
 function updateEnergyBar() {
     energyBar.style.transform = `scaleX(${energy / 100})`;
-    energyText.textContent = `${energy}%`;
     energyCounter.textContent = `${energy}/100`;
     if (energy <= 0) {
         coin.style.pointerEvents = 'none';
@@ -65,9 +63,9 @@ function openFullscreen() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    setTimeout(openFullscreen, 1000); // Задержка для гарантии работы в мобильных браузерах
+    setTimeout(openFullscreen, 500); // Задержка для гарантии работы в мобильных браузерах
 });
 
-setInterval(restoreEnergy, 500); // Восстановление энергии на 1% каждые 75 миллисекунд
+setInterval(restoreEnergy, 500); // Восстановление энергии на 1% каждые 500 миллисекунд
 
 updateEnergyBar();
