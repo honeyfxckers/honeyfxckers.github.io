@@ -38,6 +38,11 @@ body {
     background-size: cover;
     cursor: pointer;
     position: relative;
+    transition: transform 0.1s ease; /* Анимация уменьшения */
+}
+
+#coin:active {
+    transform: scale(0.9); /* Уменьшение размера на 10% при нажатии */
 }
 
 #energy-bar-container {
