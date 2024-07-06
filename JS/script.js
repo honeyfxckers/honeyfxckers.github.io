@@ -21,6 +21,7 @@ coin.addEventListener('click', () => {
         energy -= 1;
         scoreDisplay.textContent = score;
         updateEnergyBar();
+        navigator.vibrate(50); // Вибрация на 50 миллисекунд
     }
 });
 
@@ -30,6 +31,22 @@ function restoreEnergy() {
         updateEnergyBar();
     }
 }
+
+function openFullscreen() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+        document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+        document.documentElement.msRequestFullscreen();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    openFullscreen();
+});
 
 setInterval(restoreEnergy, 300); // Восстановление энергии на 1% каждые 300 миллисекунд
 
