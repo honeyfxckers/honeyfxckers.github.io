@@ -68,3 +68,10 @@ body {
     text-align: center;
     width: 100%;
 }
+
+#energy-counter {
+    position: absolute;
+    bottom: 60px; /* Над полоской энергии */
+    font-size: 24px;
+    color: white;
+}
