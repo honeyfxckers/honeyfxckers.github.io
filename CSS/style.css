@@ -16,7 +16,7 @@ body {
 }
 
 #score {
-    font-size: 48px;
+    font-size: 72px;
     margin: 20px 0;
 }
 
@@ -64,13 +64,13 @@ body {
 #energy-counter {
     position: absolute;
     bottom: 60px; /* Над полоской энергии */
-    font-size: 24px;
+    font-size: 42px;
     color: white;
 }
 
 .points {
     position: absolute;
-    font-size: 24px;
+    font-size: 46px;
     color: yellow;
     animation: rise 1s ease-out;
     pointer-events: none;
