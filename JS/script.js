@@ -15,19 +15,24 @@ function updateEnergyBar() {
     }
 }
 
-coin.addEventListener('click', () => {
+function handleCoinClick() {
     if (energy > 0) {
         score++;
         energy -= 1;
         scoreDisplay.textContent = score;
         updateEnergyBar();
-        navigator.vibrate(50); // Вибрация на 50 миллисекунд
+        if ('vibrate' in navigator) {
+            navigator.vibrate(50); // Вибрация на 50 миллисекунд
+        }
         coin.style.transform = 'scale(0.9)'; // Уменьшение изображения
         setTimeout(() => {
             coin.style.transform = 'scale(1)'; // Возвращение к исходному размеру
         }, 100);
     }
-});
+}
+
+coin.addEventListener('click', handleCoinClick);
+coin.addEventListener('touchstart', handleCoinClick); // Для мобильных устройств
 
 function restoreEnergy() {
     if (energy < 100) {
