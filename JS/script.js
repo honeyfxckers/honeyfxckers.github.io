@@ -54,9 +54,6 @@ coin.addEventListener('click', handleCoinClick);
 coin.addEventListener('touchstart', (event) => {
     event.preventDefault(); // Предотвращение всплытия событий на мобильных устройствах
     handleCoinClick(event);
-    if (navigator.vibrate) {
-        navigator.vibrate(50); // Вибрация на 50 миллисекунд
-    }
 });
 
 function restoreEnergy() {
