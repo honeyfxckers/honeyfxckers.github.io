@@ -58,6 +58,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     openFullscreen();
 });
 
-setInterval(restoreEnergy, 300); // Восстановление энергии на 1% каждые 300 миллисекунд
+setInterval(restoreEnergy, 150); // Восстановление энергии на 1% каждые 300 миллисекунд
 
 updateEnergyBar();
