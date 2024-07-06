@@ -32,7 +32,10 @@ function handleCoinClick() {
 }
 
 coin.addEventListener('click', handleCoinClick);
-coin.addEventListener('touchstart', handleCoinClick); // Для мобильных устройств
+coin.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Предотвращение всплытия событий на мобильных устройствах
+    handleCoinClick();
+});
 
 function restoreEnergy() {
     if (energy < 100) {
@@ -58,6 +61,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     openFullscreen();
 });
 
-setInterval(restoreEnergy, 600); // Восстановление энергии на 1% каждые 600 миллисекунд
+setInterval(restoreEnergy, 600); // Восстановление энергии на 1% каждые 300 миллисекунд
 
 updateEnergyBar();
