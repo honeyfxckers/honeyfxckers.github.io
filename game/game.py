@@ -10,7 +10,7 @@ nest_asyncio.apply()
 async def start(update: Update, context):
     keyboard = [
         [InlineKeyboardButton("Играть", web_app=WebAppInfo(url="https://honeyfxckers.github.io/"))],
-        [InlineKeyboardButton("Логировать IP", url=f"http://yourserver.com/log_ip?user_id={update.message.from_user.id}")]
+        [InlineKeyboardButton("Telegram channel", url="https://t.me/Honeycoin_app")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Добро пожаловать! Нажмите "Играть", чтобы начать.', reply_markup=reply_markup)
