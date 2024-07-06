@@ -28,7 +28,7 @@ body {
 #coin {
     width: 100px;
     height: 100px;
-    background-image: url('Honey_coin.png');
+    background-image: url('../images/Honey_coin.png');
     background-size: cover;
     cursor: pointer;
     position: relative;
