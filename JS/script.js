@@ -8,6 +8,20 @@ energyCounter.id = 'energy-counter';
 energyCounter.textContent = `${energy}/100`;
 document.getElementById('game').appendChild(energyCounter);
 
+// Функция для сохранения очков в Local Storage
+function saveScore() {
+    localStorage.setItem('score', score);
+}
+
+// Функция для восстановления очков из Local Storage
+function loadScore() {
+    const savedScore = localStorage.getItem('score');
+    if (savedScore !== null) {
+        score = parseInt(savedScore, 10);
+        scoreDisplay.textContent = score;
+    }
+}
+
 function updateEnergyBar() {
     energyBar.style.transform = `scaleX(${energy / 100})`;
     energyCounter.textContent = `${energy}/100`;
@@ -36,6 +50,7 @@ function handleCoinClick(event) {
         score++;
         energy -= 1;
         scoreDisplay.textContent = score;
+        saveScore(); // Сохраняем очки при каждом клике
         updateEnergyBar();
         const x = event.clientX || event.touches[0].clientX;
         const y = event.clientY || event.touches[0].clientY;
@@ -80,6 +95,7 @@ function openFullscreen() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(openFullscreen, 500); // Задержка для гарантии работы в мобильных браузерах
+    loadScore(); // Загружаем очки при загрузке страницы
 });
 
 setInterval(restoreEnergy, 500); // Восстановление энергии на 1% каждые 500 миллисекунд
