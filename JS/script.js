@@ -47,7 +47,9 @@ function restoreEnergy() {
 function openFullscreen() {
     const elem = document.documentElement;
     if (elem.requestFullscreen) {
-        elem.requestFullscreen();
+        elem.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
     } else if (elem.mozRequestFullScreen) { /* Firefox */
         elem.mozRequestFullScreen();
     } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
@@ -58,9 +60,9 @@ function openFullscreen() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    openFullscreen();
+    setTimeout(openFullscreen, 1000); // Задержка для гарантии работы в мобильных браузерах
 });
 
-setInterval(restoreEnergy, 200); // Восстановление энергии на 1% каждые 300 миллисекунд
+setInterval(restoreEnergy, 300); // Восстановление энергии на 1% каждые 300 миллисекунд
 
 updateEnergyBar();
