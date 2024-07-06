@@ -9,10 +9,8 @@ function updateEnergyBar() {
     energyBar.style.width = `${energy}%`;
     energyText.textContent = `${energy}%`;
     if (energy <= 0) {
-        energyBar.style.backgroundColor = '#ff0000';
         coin.style.pointerEvents = 'none';
     } else {
-        energyBar.style.backgroundColor = '#00ff00';
         coin.style.pointerEvents = 'auto';
     }
 }
