@@ -61,14 +61,6 @@ body {
     transform: scaleX(1); /* Полностью заполнена */
 }
 
-#energy-text {
-    position: absolute;
-    color: black; /* Черный цвет для текста процентов */
-    font-size: 18px;
-    text-align: center;
-    width: 100%;
-}
-
 #energy-counter {
     position: absolute;
     bottom: 60px; /* Над полоской энергии */
