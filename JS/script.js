@@ -8,18 +8,24 @@ energyCounter.id = 'energy-counter';
 energyCounter.textContent = `${energy}/100`;
 document.getElementById('game').appendChild(energyCounter);
 
-// Функция для сохранения очков в Local Storage
-function saveScore() {
+// Функция для сохранения очков и энергии в Local Storage
+function saveData() {
     localStorage.setItem('score', score);
+    localStorage.setItem('energy', energy);
 }
 
-// Функция для восстановления очков из Local Storage
-function loadScore() {
+// Функция для восстановления очков и энергии из Local Storage
+function loadData() {
     const savedScore = localStorage.getItem('score');
+    const savedEnergy = localStorage.getItem('energy');
     if (savedScore !== null) {
         score = parseInt(savedScore, 10);
         scoreDisplay.textContent = score;
     }
+    if (savedEnergy !== null) {
+        energy = parseInt(savedEnergy, 10);
+    }
+    updateEnergyBar();
 }
 
 function updateEnergyBar() {
@@ -50,7 +56,7 @@ function handleCoinClick(event) {
         score++;
         energy -= 1;
         scoreDisplay.textContent = score;
-        saveScore(); // Сохраняем очки при каждом клике
+        saveData(); // Сохраняем очки и энергию при каждом клике
         updateEnergyBar();
         const x = event.clientX || event.touches[0].clientX;
         const y = event.clientY || event.touches[0].clientY;
@@ -74,6 +80,7 @@ coin.addEventListener('touchstart', (event) => {
 function restoreEnergy() {
     if (energy < 100) {
         energy++;
+        saveData(); // Сохраняем энергию при восстановлении
         updateEnergyBar();
     }
 }
@@ -95,7 +102,7 @@ function openFullscreen() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(openFullscreen, 500); // Задержка для гарантии работы в мобильных браузерах
-    loadScore(); // Загружаем очки при загрузке страницы
+    loadData(); // Загружаем очки и энергию при загрузке страницы
 });
 
 setInterval(restoreEnergy, 500); // Восстановление энергии на 1% каждые 500 миллисекунд
