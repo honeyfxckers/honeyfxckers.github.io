@@ -22,6 +22,10 @@ coin.addEventListener('click', () => {
         scoreDisplay.textContent = score;
         updateEnergyBar();
         navigator.vibrate(50); // Вибрация на 50 миллисекунд
+        coin.style.transform = 'scale(0.9)'; // Уменьшение изображения
+        setTimeout(() => {
+            coin.style.transform = 'scale(1)'; // Возвращение к исходному размеру
+        }, 100);
     }
 });
 
@@ -33,14 +37,15 @@ function restoreEnergy() {
 }
 
 function openFullscreen() {
-    if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-    } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
-        document.documentElement.mozRequestFullScreen();
-    } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        document.documentElement.webkitRequestFullscreen();
-    } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
-        document.documentElement.msRequestFullscreen();
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
     }
 }
 
