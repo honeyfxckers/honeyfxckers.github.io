@@ -63,6 +63,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(openFullscreen, 1000); // Задержка для гарантии работы в мобильных браузерах
 });
 
-setInterval(restoreEnergy, 300); // Восстановление энергии на 1% каждые 300 миллисекунд
+setInterval(restoreEnergy, 75); // Восстановление энергии на 1% каждые 300 миллисекунд
 
 updateEnergyBar();
