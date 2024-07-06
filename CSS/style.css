@@ -49,8 +49,10 @@ body {
 
 #energy-bar {
     height: 100%;
-    width: 0;
+    width: 100%;
     background-color: #00ff00; /* Зеленый цвет для заполнения */
+    transform-origin: left; /* Устанавливает точку начала заполнения */
+    transform: scaleX(1); /* Полностью заполнена */
 }
 
 #energy-text {

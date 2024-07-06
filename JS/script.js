@@ -6,7 +6,7 @@ const energyBar = document.getElementById('energy-bar');
 const energyText = document.getElementById('energy-text');
 
 function updateEnergyBar() {
-    energyBar.style.width = `${energy}%`;
+    energyBar.style.transform = `scaleX(${energy / 100})`;
     energyText.textContent = `${energy}%`;
     if (energy <= 0) {
         coin.style.pointerEvents = 'none';
