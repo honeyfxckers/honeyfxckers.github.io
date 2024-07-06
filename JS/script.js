@@ -3,12 +3,17 @@ let energy = 100;
 const coin = document.getElementById('coin');
 const scoreDisplay = document.getElementById('score');
 const energyBar = document.getElementById('energy-bar');
+const energyText = document.getElementById('energy-text');
 
 function updateEnergyBar() {
     energyBar.style.width = `${energy}%`;
+    energyText.textContent = `${energy}%`;
     if (energy <= 0) {
         energyBar.style.backgroundColor = '#ff0000';
         coin.style.pointerEvents = 'none';
+    } else {
+        energyBar.style.backgroundColor = '#00ff00';
+        coin.style.pointerEvents = 'auto';
     }
 }
 
@@ -20,5 +25,14 @@ coin.addEventListener('click', () => {
         updateEnergyBar();
     }
 });
+
+function restoreEnergy() {
+    if (energy < 100) {
+        energy++;
+        updateEnergyBar();
+    }
+}
+
+setInterval(restoreEnergy, 300); // Восстановление энергии на 1% каждые 300 миллисекунд
 
 updateEnergyBar();

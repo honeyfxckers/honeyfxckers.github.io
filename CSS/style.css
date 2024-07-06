@@ -26,8 +26,8 @@ body {
 }
 
 #coin {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     background-image: url('../images/Honey_coin.png');
     background-size: cover;
     cursor: pointer;
@@ -42,10 +42,21 @@ body {
     background-color: #555;
     border-radius: 15px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #energy-bar {
     height: 100%;
     width: 100%;
     background-color: #00ff00;
+}
+
+#energy-text {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
 }
