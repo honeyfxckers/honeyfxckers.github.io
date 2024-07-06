@@ -24,7 +24,7 @@ function handleCoinClick() {
         energy -= 1;
         scoreDisplay.textContent = score;
         updateEnergyBar();
-        if ('vibrate' in navigator) {
+        if (navigator.vibrate) {
             navigator.vibrate(50); // Вибрация на 50 миллисекунд
         }
         coin.style.transform = 'scale(0.9)'; // Уменьшение изображения
